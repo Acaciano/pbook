@@ -28,11 +28,8 @@ Bem-vindo ao projeto de Sistema de Livraria! Este é um sistema completo para ge
 
 1. **Camada de Apresentação**:
    - Contém as Views e Controllers que definem a interface do usuário e a lógica de apresentação.
-   
-2. **Camada de Serviço**:
-   - Contém as classes de serviço que encapsulam a lógica de negócios e interagem com os repositórios.
-   
-3. **Camada de Repositório**:
+
+2. **Camada de Repositório**:
    - Contém os repositórios que utilizam Entity Framework e Dapper para acessar e manipular dados no banco de dados.
    
 4. **Camada de Dados**:
