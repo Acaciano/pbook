@@ -27,3 +27,7 @@ Bem-vindo ao projeto de Sistema de Livraria! Este sistema completo permite geren
 1. **Clone o Repositório**:
    ```bash
    git clone https://github.com/Acaciano/pbook
+
+2. **Executar os Scripts**:
+   ```bash
+   Acessar a pasta Scripts e rodar os scripts na ordem
