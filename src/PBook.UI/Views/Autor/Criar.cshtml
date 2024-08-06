@@ -1,0 +1,29 @@
+﻿@using PBook.Domain.Entidades
+@model Autor
+@{
+    ViewData["Title"] = "Criar autor";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar autor</h1>
+</div>
+
+
+<form asp-controller="Autor" asp-action="Criar" method="post">
+
+    <div class="form-group">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do autor">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Autor" role="button">Voltar</a>
+        </div>
+    </div>
+
+</form>

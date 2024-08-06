@@ -1,0 +1,33 @@
+﻿@using PBook.Domain.Entidades
+@model List<Livro>
+
+<table id="table-livros-autor" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Editora</th>
+            <th scope="col">Edição</th>
+            <th scope="col">Ano de Publicação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var livro in Model)
+            {
+                <tr>
+                    <th scope="row">@livro.Id</th>
+                    <td>@livro.Titulo</td>
+                    <td>@livro.Editora</td>
+                    <td>@livro.Edicao</td>
+                    <td>@livro.AnoPublicacao</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="odd"><td valign="top" colspan="4">Nenhum livro encontrado</td></tr>
+        }
+    </tbody>
+</table>

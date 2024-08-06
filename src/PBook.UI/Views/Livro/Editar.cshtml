@@ -1,0 +1,99 @@
+﻿@using PBook.Domain.Entidades
+@model Livro
+@{
+    ViewData["Title"] = "Editar livro";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Editar livro</h1>
+</div>
+
+
+<form asp-controller="Livro" asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="Id"/>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="nome" class="form-label">Título</label>
+                <input type="text" asp-for="Titulo" class="form-control" placeholder="Digite o título do livro">
+                @Html.ValidationMessageFor(x => x.Titulo)
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="nome" class="form-label">Editora</label>
+                <input type="text" asp-for="Editora" class="form-control" placeholder="Digite a editora do livro">
+                @Html.ValidationMessageFor(x => x.Editora)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="nome" class="form-label">Edição</label>
+                <input type="number" asp-for="Edicao" maxlength="10" class="form-control" placeholder="Digite a edição do livro">
+                @Html.ValidationMessageFor(x => x.Edicao)
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="nome" class="form-label">Ano de Publicação</label>
+                <input type="number" maxlength="4" asp-for="AnoPublicacao" class="form-control" placeholder="Digite o ano de publicação do livro">
+                @Html.ValidationMessageFor(x => x.AnoPublicacao)
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="nome" class="form-label">Preço</label>
+                <input type="text" asp-for="Preco" class="form-control" placeholder="Digite o preço do livro">
+                @Html.ValidationMessageFor(x => x.Preco)
+            </div>
+        </div>
+
+    </div>
+
+       <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">Autores</label>
+                <select class="form-control" asp-for="AutoresSelecionados" multiple="multiple">
+                    @foreach (Autor item in ViewBag.Autores)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label">Assuntos</label>
+                <select class="form-control" asp-for="AssuntosSelecionados" multiple="multiple">
+                    @foreach (Assunto item in ViewBag.Assuntos)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Livro" role="button">Voltar</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/pages/livro/create.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,77 @@
+﻿@using PBook.Domain.Entidades
+@model List<Livro>
+@{
+    ViewData["Title"] = "Listagem de Livros";
+}
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" asp-controller="Livro" asp-action="Criar" role="button">Adicionar novo livro</a>
+    </div>
+
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Listagem de livros</h1>
+
+    <table id="table-livros" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Edição</th>
+                <th scope="col">Ano de Publicação</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var livro in Model)
+                {
+                    <tr>
+                        <th scope="row">@livro.Id</th>
+                        <td>@livro.Titulo</td>
+                        <td>@livro.Editora</td>
+                        <td>@livro.Edicao</td>
+                        <td>@livro.AnoPublicacao</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" asp-action="Editar" asp-controller="Livro" asp-route-id="@livro.Id" class="btn btn-primary">Editar</a>
+                                <a role="button" asp-action="ApagarConfirmacao" asp-controller="Livro" asp-route-id="@livro.Id" class="btn btn-danger">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum livro encontrado</td></tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/pages/livro/index.js" asp-append-version="true"></script>
+}

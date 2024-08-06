@@ -1,0 +1,47 @@
+﻿@using PBook.Domain.Entidades
+@model List<Livro>
+@{
+    ViewData["Title"] = "Relatório de Livros";
+}
+
+<div class="text-center">
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Relatório de livros</h1>
+
+    <form asp-controller="Relatorio" asp-action="GerarRelatorioLivros" method="post">
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary btn-block">Gerar Relatório</button>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Livro" role="button">Voltar</a>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/pages/livro/index.js" asp-append-version="true"></script>
+}
