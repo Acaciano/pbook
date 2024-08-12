@@ -1,12 +1,12 @@
 ﻿@using PBook.Domain.Entidades
-@model Autor
+@model Assunto
 @{
-    ViewData["Title"] = "Confirmação apagar autor";
+    ViewData["Title"] = "Confirmação apagar assunto";
 }
 
 <div class="text-center">
-    <h3>Realmente deseja apagar o autor (@Model.Nome)?</h3>
+    <h3>Realmente deseja apagar o assunto (@Model.Nome)?</h3>
 </div>
 
-<a class="btn btn-primary btn-block" asp-action="Index" asp-controller="Autor" role="button">Cancelar exclusão</a>
-<a class="btn btn-danger btn-block" asp-action="Apagar" asp-controller="Autor" asp-route-id="@Model.Id" role="button">Confirmar exclusão</a>
+<a class="btn btn-primary btn-block" asp-action="Index" asp-controller="Assunto" role="button">Cancelar exclusão</a>
+<a class="btn btn-danger btn-block" asp-action="Apagar" asp-controller="Assunto" asp-route-id="@Model.Id" role="button">Confirmar exclusão</a>

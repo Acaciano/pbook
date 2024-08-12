@@ -46,7 +46,7 @@ namespace PBook.UI.Controllers
             {
                 bool apagado = await _service.Apagar(id);
 
-                if (apagado) TempData["MensagemSucesso"] = "Asunto apagado com sucesso!"; else TempData["MensagemErro"] = "Ops, não conseguimos apagar o assunto, tente novamante!";
+                if (apagado) TempData["MensagemSucesso"] = "Assunto apagado com sucesso!"; else TempData["MensagemErro"] = "Ops, não conseguimos apagar o assunto, tente novamante!";
                 return RedirectToAction("Index");
             }
             catch (Exception erro)

@@ -61,9 +61,12 @@
             <div class="form-group">
                 <label class="form-label">Autores</label>
                 <select class="form-control" asp-for="AutoresSelecionados" multiple="multiple">
-                    @foreach (Autor item in ViewBag.Autores)
+                    @if (ViewBag.Autores != null)
                     {
-                        <option value="@item.Id">@item.Nome</option>
+                        foreach (Autor item in ViewBag.Autores)
+                        {
+                            <option value="@item.Id">@item.Nome</option>
+                        }
                     }
                 </select>
             </div>
@@ -73,9 +76,12 @@
             <div class="form-group">
                 <label class="form-label">Assuntos</label>
                 <select class="form-control" asp-for="AssuntosSelecionados" multiple="multiple">
-                    @foreach (Assunto item in ViewBag.Assuntos)
+                    @if (ViewBag.Assuntos != null)
                     {
-                        <option value="@item.Id">@item.Nome</option>
+                        foreach (Assunto item in ViewBag.Assuntos)
+                        {
+                            <option value="@item.Id">@item.Nome</option>
+                        }
                     }
                 </select>
 

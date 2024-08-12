@@ -32,8 +32,7 @@ namespace PBook.UI.Controllers
 
         public async Task<IActionResult> Criar()
         {
-            ViewBag.Autores = await _autorService.BuscarTodos();
-            ViewBag.Assuntos = await _assuntoService.BuscarTodos();
+            await CarregarDadosAutoresEAssuntoViewBag();
 
             return View();
         }
@@ -89,6 +88,7 @@ namespace PBook.UI.Controllers
                     return RedirectToAction("Index");
                 }
 
+                await CarregarDadosAutoresEAssuntoViewBag();
                 return View(livro);
             }
             catch (Exception erro)
@@ -117,6 +117,12 @@ namespace PBook.UI.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos atualizar seu livro, tente novamante, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        private async Task CarregarDadosAutoresEAssuntoViewBag()
+        {
+            ViewBag.Autores = await _autorService.BuscarTodos();
+            ViewBag.Assuntos = await _assuntoService.BuscarTodos();
         }
     }
 }
